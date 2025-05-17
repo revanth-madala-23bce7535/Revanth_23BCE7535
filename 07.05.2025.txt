@@ -1,0 +1,95 @@
+show databases;
+
+create database vit;
+
+use vit;
+
+create table cse (
+    s_id int,
+    student_name varchar(40),
+    s_mark int,
+    year int
+);
+
+create table it (
+    s_id int,
+    student_name varchar(40),
+    s_mark int,
+    year int
+);
+
+create table mech (
+    s_id int,
+    student_name varchar(40),
+    s_mark int,
+    year int
+);
+
+show tables from vit;
+
+insert into cse values 
+(101,'Aditya',89,2022),
+(102,'Sneha',92,2023),
+(103,'Ravi',76,2022),
+(104,'Neha',85,2024),
+(105,'Kunal',90,2023),
+(106,'Priya',80,2022),
+(107,'Aman',88,2024),
+(108,'Ritika',91,2023),
+(109,'Varun',77,2022),
+(110,'Meena',84,2024);
+
+insert into it values 
+(201,'Raj',75,2022),
+(202,'Divya',82,2023),
+(203,'Anil',78,2022),
+(204,'Kavya',88,2024),
+(205,'Soham',93,2023),
+(206,'Isha',81,2022),
+(207,'Nikhil',85,2024),
+(208,'Shreya',89,2023),
+(209,'Kiran',80,2022),
+(210,'Rohit',86,2024);
+
+insert into mech values 
+(301,'Vivek',74,2022),
+(302,'Tanya',83,2023),
+(303,'Sagar',79,2022),
+(304,'Ruchi',87,2024),
+(305,'Manoj',91,2023),
+(306,'Aarti',80,2022),
+(307,'Nitin',84,2024),
+(308,'Diya',90,2023),
+(309,'Harsh',76,2022),
+(310,'Pooja',85,2024);
+
+select * from cse;
+select * from it;
+select * from mech;
+
+alter table cse add(
+    address varchar(100)
+);
+
+alter table it add(
+    address varchar(100),
+    phone int4
+);
+
+alter table it drop column phone;
+
+alter table mech add(
+    address varchar(100) default 'India'
+);
+
+insert into mech values(311, 'Abhavya', 88, 2023, 'USA');
+
+update mech set address = 'Canada' where s_mark < 90;
+
+update mech set s_mark = s_mark + 2 where address = 'India';
+select * from cse;
+select * from it;
+select * from mech;
+
+
+drop database vit;
