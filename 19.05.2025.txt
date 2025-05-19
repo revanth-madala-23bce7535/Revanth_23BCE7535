@@ -1,0 +1,97 @@
+drop table worker;
+create database if not exists vit;
+use vit;
+CREATE TABLE Worker (
+	WORKER_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	FIRST_NAME CHAR(25),
+	LAST_NAME CHAR(25),
+	SALARY INT(15),
+	JOINING_DATE DATETIME,
+	DEPARTMENT CHAR(25)
+);
+
+INSERT INTO Worker 
+	(WORKER_ID, FIRST_NAME, LAST_NAME, SALARY, JOINING_DATE, DEPARTMENT) VALUES
+		(001, 'Monika', 'Arora', 100000, '14-02-20 09.00.00', 'HR'),
+		(002, 'Niharika', 'Verma', 80000, '14-06-11 09.00.00', 'Admin'),
+		(003, 'Vishal', 'Singhal', 300000, '14-02-20 09.00.00', 'HR'),
+		(004, 'Amitabh', 'Singh', 500000, '14-02-20 09.00.00', 'Admin'),
+		(005, 'Vivek', 'Bhati', 500000, '14-06-11 09.00.00', 'Admin'),
+		(006, 'Vipul', 'Diwan', 200000, '14-06-11 09.00.00', 'Account'),
+		(007, 'Satish', 'Kumar', 75000, '14-01-20 09.00.00', 'Account'),
+		(008, 'Geetika', 'Chauhan', 90000, '14-04-11 09.00.00', 'Admin');
+select * from Worker;
+delete from worker where department="account";
+
+delete from worker;
+
+truncate table worker;
+select * from worker;
+
+
+
+
+
+
+use vit;
+drop table cse;
+create table cse(
+	s_id int,
+	name varchar(50)
+);
+start transaction;
+insert into cse values (101,'rev');
+savepoint a11;
+insert into cse values (102,'ali');
+savepoint a22;
+select* from cse;
+delete from cse where s_id = 101;
+select * from cse;
+-- commit;
+rollback to a11;
+
+
+
+
+
+
+drop table worker;
+create database if not exists vit;
+use vit;
+CREATE TABLE Worker (
+	WORKER_ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	FIRST_NAME CHAR(25),
+	LAST_NAME CHAR(25),
+	SALARY INT(15),
+	JOINING_DATE DATETIME,
+	DEPARTMENT CHAR(25)
+);
+
+INSERT INTO Worker 
+	(WORKER_ID, FIRST_NAME, LAST_NAME, SALARY, JOINING_DATE, DEPARTMENT) VALUES
+		(001, 'Monika', 'Arora', 100000, '14-02-20 09.00.00', 'HR'),
+		(002, 'Niharika', 'Verma', 80000, '14-06-11 09.00.00', 'Admin'),
+		(003, 'Vishal', 'Singhal', 300000, '14-02-20 09.00.00', 'HR'),
+		(004, 'Amitabh', 'Singh', 500000, '14-02-20 09.00.00', 'Admin'),
+		(005, 'Vivek', 'Bhati', 500000, '14-06-11 09.00.00', 'Admin'),
+		(006, 'Vipul', 'Diwan', 200000, '14-06-11 09.00.00', 'Account'),
+		(007, 'Satish', 'Kumar', 75000, '14-01-20 09.00.00', 'Account'),
+		(008, 'Geetika', 'Chauhan', 90000, '14-04-11 09.00.00', 'Admin');
+select first_name as employee_name from worker;
+
+desc worker;
+
+select * from worker;
+select first_name,department from worker where salary>300000;
+select first_name,department from worker where salary<300000;
+select first_name,department from worker where salary=100000;
+select first_name,department from worker where salary<=300000;
+select first_name,department from worker where salary>=300000;
+
+select first_name from worker where salary>200000 and department="HR";
+select first_name from worker where salary < 200000 and (department = 'hr' or department = 'admin');
+select first_name from worker where salary <300000 and salary >100000 and (department ="Account" or department = "admin");
+
+select first_name from worker where department in ('Admin','Accounts');
+select first_name from worker where department not in ('Admin','Accounts');
+select max(salary) as max_salary from worker where department in ('hr', 'admin') and worker_id % 2 = 0;
