@@ -31,7 +31,7 @@ select * from products;
 
 
 create table constraints(
-	id int primary key,
+    id int primary key,
     def varchar(20),
     uni int unique,
     nu int not null
@@ -48,7 +48,7 @@ alter table constraints add constraint hello primary key(id,def);
 alter table constraints add primary key(id);
 
 create table t1(
-	id int primary key,
+    id int primary key,
     def varchar(20),
     uni int unique,
     nu int not null,
@@ -57,7 +57,7 @@ create table t1(
 alter table t1 add check (nu<1003);
 
 create table t1(
-	id int primary key,
+    id int primary key,
     def varchar(20),
     uni int unique,
     nu int not null,
