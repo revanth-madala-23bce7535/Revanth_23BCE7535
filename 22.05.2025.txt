@@ -1,0 +1,36 @@
+use vit;
+
+select * from worker;
+
+select count(department) from worker where department="account";
+select count(department) from worker where department;
+
+select max(dept_count) from (select count(*) as dept_count from worker group by department) as dept_counts;
+
+select count(department) from worker group by department order by count(department) desc limit 1;
+select department, sum(salary) from worker group by department order by sum(salary) desc limit 1;
+select department, count(department) from worker group by department having count(department)>3;
+select department, sum(salary) from worker group by department order by sum(salary) desc limit 1 offset 1;
+
+select department, count(department) from worker group by department having count(department)>3;
+select first_name, department from worker where salary = (select max(salary) from worker);
+select department, count(*) as emp_count, sum(salary) as total_salary from worker group by department having count(*) > 1;
+
+drop table student;
+create table student(
+s_id int,
+s_name varchar(25)
+);
+insert into student values (101,'jayanth'),(102,'karthik'),(103,'Praveen'),(105,'mahesh'),(106,'Arun');
+
+drop table address;
+create table address(
+s_id int,
+s_address varchar(25));
+insert into address values (101,'coimbatore'),(104,'chennai'),(105,'pune');
+select * from student cross join address;
+select * from student inner join address on student.s_id=address.s_id;
+select * from student left outer join address on (student.s_id=address.s_id);
+
+use vit;
+select first_name,salary from worker w1 where 5 = (select count(distinct salary)from worker w2 where w2.salary >= w1.salary);
